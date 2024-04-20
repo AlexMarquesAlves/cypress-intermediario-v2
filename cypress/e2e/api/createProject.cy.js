@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 
 describe('Create Project', () => {
   beforeEach(() => cy.api_deleteProjects())
-  it('successfully', () => {
+  it('should create a new project successfully', () => {
     const project = {
       name: `project-${faker.datatype.uuid()}`,
       description: faker.random.words(5),
