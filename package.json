@@ -4,13 +4,20 @@
   "description": "Repositório do projeto v2 do curso de testes automatizados com Cypress (intermdiário) da Escola TAT no Udemy",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "cypress run"
+    "cypress:web": "npx cypress open",
+    "cypress:mobile": "npx cypress open --config viewportWidth=410 viewportHeight=860",
+    "cypress:headless": "npx cypress run --browser electron",
+    "cypress:headless:mobile": "npx cypress run --browser electron --config viewportWidth=410 viewportHeight=860",
+    "format": "prettier \"./**/*.{ts,tsx,js,jsx,css,html}\" --write",
+    "check": "prettier \"./**/*.{ts,tsx,js,jsx,css,html}\" --check"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wlsf82/cypress-intermediario-v2.git"
   },
   "keywords": [
+    "Testing",
+    "Cypress.io",
     "Cypress intermediário",
     "Talking About Testing",
     "E2E Testing"
@@ -20,5 +27,9 @@
   "bugs": {
     "url": "https://github.com/wlsf82/cypress-intermediario-v2/issues"
   },
-  "homepage": "https://github.com/wlsf82/cypress-intermediario-v2#readme"
+  "homepage": "https://github.com/wlsf82/cypress-intermediario-v2#readme",
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
+    "eslint": "^8.57.0"
+  }
 }
