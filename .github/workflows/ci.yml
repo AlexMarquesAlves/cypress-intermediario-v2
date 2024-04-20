@@ -9,7 +9,7 @@ jobs:
         with:
           # Fine-grained PAT with contents:write and workflows:write
           # scopes
-          token: ${{ secrets.MAIN_TOKEN }}
+          token: ${{ secrets.WORKFLOW_TOKEN }}
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
