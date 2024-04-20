@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 
-describe('Create issue', () => {
+describe('Create issue by API', () => {
   beforeEach(() => cy.api_deleteProjects())
 
   it('should create a new issue successfully', () => {
