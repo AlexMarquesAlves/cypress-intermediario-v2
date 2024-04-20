@@ -1,7 +1,7 @@
 name: Code linter 🎨
 on: [push]
 jobs:
-  cypress-run:
+  code-linter:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
