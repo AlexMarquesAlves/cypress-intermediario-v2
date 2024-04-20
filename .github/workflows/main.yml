@@ -1,0 +1,39 @@
+jobs:
+  changewf:
+    name: Change a workflow file
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4.1.1
+        with:
+          # Fine-grained PAT with contents:write and workflows:write
+          # scopes
+          token: ${{ secrets.MAIN_TOKEN }}
+
+      - name: Make change to workflow file
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          # Create new branch
+          git switch -c "feature"
+
+          # Edit workflow file
+          echo "# I am a change!" >> .github/workflows/workflow.yml
+
+          git config --global user.name "github-actions"
+          git config --global user.email \
+              "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add .github/workflows/workflow.yml
+          git commit --message "Update workflow"
+
+          # This authenticates with WORKFLOW_TOKEN, because it was
+          # used with the checkout action
+          git push --set-upstream origin "feature"
+
+          # This authenticates with GITHUB_TOKEN, using the scopes
+          # set in jobs.changewf.permissions
+          gh pr create --title "Update workflow" --body ''
