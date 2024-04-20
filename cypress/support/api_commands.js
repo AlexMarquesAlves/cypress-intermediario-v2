@@ -12,3 +12,11 @@ Cypress.Commands.add('api_createProject', (project) => {
     headers: { Authorization: accessToken },
   })
 })
+
+Cypress.Commands.add('api_getAllProjects', () => {
+  cy.request({
+    method: 'GET',
+    url: '/api/v4/projects/',
+    headers: { Authorization: accessToken },
+  })
+})
