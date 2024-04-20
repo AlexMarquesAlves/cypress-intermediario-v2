@@ -1,9 +1,11 @@
 {
   "extends": [
-    "@rocketseat/eslint-config/next",
+    // "@rocketseat/eslint-config/next",
     "@rocketseat/eslint-config/node"
   ],
   "rules": {
-    "no-undef": ["off"] // Proíbe que se
+    "no-undef": [
+      "off"
+    ] // Proíbe que se
   }
 }
