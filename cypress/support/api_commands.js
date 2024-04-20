@@ -1,25 +1,14 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const accessToken = `Bearer ${Cypress.env('gitlab_access_token')}`
+
+Cypress.Commands.add('api_createProject', (project) => {
+  cy.request({
+    method: 'POST',
+    url: `/api/v4/projects/`,
+    body: {
+      name: project.name,
+      description: project.description,
+      initialize_with_readme: true,
+    },
+    headers: { Authorization: accessToken },
+  })
+})
