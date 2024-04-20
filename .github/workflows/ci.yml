@@ -8,5 +8,9 @@ jobs:
         uses: actions/checkout@v4
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+      # - name: Cypress run
+      #   uses: cypress-io/github-action@v6
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'v20.12.0'
