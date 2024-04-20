@@ -11,8 +11,8 @@
     "cypress:mobile": "npx cypress open --config viewportWidth=410 viewportHeight=860",
     "cypress:headless": "npx cypress run --browser electron",
     "cypress:headless:mobile": "npx cypress run --browser electron --config viewportWidth=410 viewportHeight=860",
-    "lint": "eslint src --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint src --ext ts,tsx,js,jsx --fix",
+    "lint": "eslint \"./**/*.{ts,tsx,js,jsx,css,html}\" --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint \"./**/*.{ts,tsx,js,jsx,css,html}\" --fix",
     "format": "prettier \"./**/*.{ts,tsx,js,jsx,css,html}\" --write",
     "check": "prettier \"./**/*.{ts,tsx,js,jsx,css,html}\" --check"
   },
