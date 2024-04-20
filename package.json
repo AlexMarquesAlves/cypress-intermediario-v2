@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Repositório do projeto v2 do curso de testes automatizados com Cypress (intermdiário) da Escola TAT no Udemy",
   "main": "cypress.config.js",
+  "engines": {
+    "node": "20.12.0"
+  },
   "scripts": {
     "cypress:web": "npx cypress open",
     "cypress:mobile": "npx cypress open --config viewportWidth=410 viewportHeight=860",
