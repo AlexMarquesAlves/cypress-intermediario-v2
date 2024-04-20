@@ -1,47 +1,23 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-describe('Create a new project', () => {
-  const projectForm = {
-    blankProject: {
-      projectName: 'Project101',
-      projectURL: 'root',
-      projectSlug: 'project-101',
-      projectDescription: 'This is the first project I created on DevOpsDays.',
-      visibilityLevel: {
-        private: 'private',
-        internal: 'internal',
-        public: 'public',
-      },
-    },
-  }
+import { faker } from '@faker-js/faker'
 
-  it('shout create a new project', () => {
+describe('Create Project', () => {
+  beforeEach(() => {
     cy.login()
-    // Go to the projects page and click "New Project" button
-    cy.get('.btn-success').should('be.visible').click()
-    cy.visit('/projects/new')
+  })
 
-    cy.get('#project_name')
-      .should('be.visible')
-      .type(projectForm.blankProject.projectName)
-      .should('have.value', projectForm.blankProject.projectName)
+  it('successfully', () => {
+    const project = {
+      name: `project-${faker.datatype.uuid()}`,
+      description: faker.random.words(5),
+    }
 
-    cy.get('#project_path')
-      .should('be.visible')
-      .clear()
-      .type(projectForm.blankProject.projectSlug)
-      .should('have.value', projectForm.blankProject.projectSlug)
+    cy.gui_createProject(project)
 
-    cy.get('#project_description')
-      .should('be.visible')
-      .type(projectForm.blankProject.projectDescription)
-      .should('have.value', projectForm.blankProject.projectDescription)
-    cy.get('#project_visibility_level_0').should('be.visible').check()
-    cy.get('#project_visibility_level_10').should('be.visible').check()
-    cy.get('#project_visibility_level_20').should('be.visible').check()
-    cy.get('#project_initialize_with_readme')
-      .should('be.visible')
-      .check()
-      .uncheck()
-    cy.get('#blank-project-pane > #new_project > .btn-success').click()
+    cy.url().should(
+      'be.equal',
+      `${Cypress.config('baseUrl')}/${Cypress.env('user_name')}/${project.name}`,
+    )
+    cy.contains(project.name).should('be.visible')
+    cy.contains(project.description).should('be.visible')
   })
 })
