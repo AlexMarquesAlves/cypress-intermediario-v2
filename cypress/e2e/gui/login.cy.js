@@ -1,4 +1,4 @@
-describe('Login', () => {
+describe('Login by GUI', () => {
   it('should login successfully', () => {
     const user = Cypress.env('user_name')
     const password = Cypress.env('user_password')

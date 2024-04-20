@@ -1,4 +1,4 @@
-describe('Logout', () => {
+describe('Logout by GUI', () => {
   beforeEach(() => {
     cy.login()
     cy.visit('/')

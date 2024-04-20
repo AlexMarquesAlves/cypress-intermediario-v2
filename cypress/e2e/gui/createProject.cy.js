@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker'
 
 const options = { env: { snapshotOnly: true } }
 
-describe('Create Project', options, () => {
+describe('Create Project by GUI', options, () => {
   beforeEach(() => {
     cy.api_deleteProjects()
     cy.login()
